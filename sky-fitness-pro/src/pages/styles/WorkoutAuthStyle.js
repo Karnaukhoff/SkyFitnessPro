@@ -25,7 +25,7 @@ export const WorkoutText = styled.p`
 `
 
 export const WorkoutVideo = styled.div`
-    width: 1160px;
+    width: 1196px;
     height: 639px;
     background-color: grey;
     display: flex;
@@ -148,8 +148,8 @@ export const WorkoutProgressBarSpan = styled.span`
     text-align: left;
 `
 export const Main = styled.main`
-    padding: 100px 0 60px;
-    background-color: 'var(--color-main-bg-light)';
+    padding: 50px 0 60px;
+    background-color: var(--color-main-bg-light);
 `
 export const Container = styled.div`
     max-width: 1190px;

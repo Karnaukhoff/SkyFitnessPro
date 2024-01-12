@@ -7,12 +7,12 @@ export const WorkoutPage = () => {
 
     return (
         <> 
-        <S.ProfileContainer>
-            <ProfileHeader />
+
+            
             <S.Main >
                 <S.Container>
                 <S.WorkoutPageContainer>
-                
+                <ProfileHeader />
 
                 <S.WorkoutVideo>
                     <img src="/img/subtract.svg" alt="subtract" />
@@ -50,7 +50,7 @@ export const WorkoutPage = () => {
             </S.WorkoutPageContainer>
                 </S.Container>
             </S.Main>
-        </S.ProfileContainer>
+
         </>  
     )
 }
