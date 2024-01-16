@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  .center {
+    padding-left: calc(50% - 600px);
+    padding-right: calc(50% - 600px);
+  }
+
+  .top__menu{
+    margin-top: 30px;
+  }
+  .for__you{
+    margin-top: 75px;
+  }
+  .for__you__p{
+    color: black;
+font-size: 40px;
+font-family: StratosSkyeng;
+font-weight: 400;
+line-height: 48px;
+word-wrap: break-word;
+margin-bottom: top 75px;
+  }
+  .for__you__ul{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+
+  }
+  .for__you__li{
+    display: flex
+  }
+  .for__you__li__text{
+    color: black;
+font-size: 24px;
+font-family: StratosSkyeng;
+font-weight: 400;
+line-height: 32px;
+word-wrap: break-word;
+margin-left: 24px
+  }
+  .areas{
+    color: black;
+font-size: 40px;
+font-family: StratosSkyeng;
+font-weight: 400;
+line-height: 48px;
+word-wrap: break-word;
+margin-top: 75px;
+  }
+.areas__li{
+  font-size: 24px;
+font-family: StratosSkyeng;
+font-weight: 400;
+line-height: 32px;
+word-wrap: break-word
+}
+.areas__ul{
+  display: flex;
+  gap: 226px;
+  margin-top: 22px;
+  margin-left: 25px
+}
+
+.footer__text{
+  color: black;
+font-size: 24px;
+font-family: StratosSkyeng;
+font-weight: 400;
+line-height: 32px;
+word-wrap: break-word
+}
+
+.application__text{
+  font-size: 32px;
+font-family: StratosSkyeng;
+font-weight: 400;
+line-height: 40px;
+word-wrap: break-word;
+margin-top: 75px
+}
+.application_button{
+  margin-top: 20px;
+  background: #580EA2; 
+  border-radius: 46px;
+  color: white;
+font-size: 18px;
+font-family: StratosSkyeng;
+font-weight: 400;
+line-height: 24px;
+word-wrap: break-word;
+cursor: pointer;
+padding: 15px;
+}
+.top__lesson{
+  margin-top: 75px;
+}
+.footer__text{
+  margin-top: 75px;
+}
+.application{
+  background-image: url("sky-fitness-pro/img/application.png");
+  background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   height: 300px;
+   max-width: 100%;
+}
