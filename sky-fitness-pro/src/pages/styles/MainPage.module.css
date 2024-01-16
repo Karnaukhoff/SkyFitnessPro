@@ -1,0 +1,125 @@
+.main {
+    background: #271a58;
+    background-size: cover;
+    min-height: 100vh;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 35px;
+}
+.button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 5px 16px 7px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 46px;
+    background: #140d40;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 140px;
+    font-family: StratosSkyeng;
+}
+.button:hover {
+    background: #2d1f79;
+    transition: 0.5s;
+}
+
+.button:active {
+    background: #3b29a1;
+    transition: 0.2s;
+}
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    color: #fff;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: -0.05px;
+    opacity: 0.5;
+    padding-bottom: 35px;
+    font-family: StratosSkyeng;
+}
+
+.subtitle {
+    color: #f4f4ff;
+    width: 830px;
+    font-size: 60px;
+    line-height: 91.5%;
+    letter-spacing: -1.169px;
+    font-family: StratosSkyeng;
+}
+
+.main__title_sticker {
+    margin-right: 140px;
+}
+
+.footer {
+    display: flex;
+    padding-top: 34px;
+    justify-content: center;
+    padding-bottom: 60px;
+}
+
+.mainList {
+    display: grid;
+    grid-template: auto/ repeat(3, 360px);
+    justify-content: space-between;
+    row-gap: 44px;
+    margin-bottom: 34px;
+}
+
+@media (max-width: 1356px) {
+    .subtitle {
+        width: 300px;
+        font-size: 24px;
+    }
+    .main__title_sticker {
+        display: none;
+    }
+    .button {
+        margin-right: 100px;
+    }
+    .footer {
+        padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 662px) {
+    .subtitle {
+        width: 250px;
+        font-size: 30px;
+        text-align: center;
+    }
+    .title {
+        font-size: 15px;
+        text-align: center;
+    }
+    .main {
+        padding-left: calc(50% - 290px / 2);
+        padding-right: calc(50% - 290px / 2);
+        &_logo {
+            width: 150px;
+            height: 25px;
+        }
+    }
+}
