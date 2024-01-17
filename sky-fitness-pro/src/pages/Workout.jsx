@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Wourkout.css">
-    <title>Workout</title>
-</head>
-<body>
-    <div class="center">
+import * as Styled from "./WorkoutStyles";
+export function WorkoutPage = () => {
+    return(
+        <Styled.Center>
     <div class="top center">
         <div class="top__menu">
             <a href="#" class="top__logo">
@@ -151,6 +145,8 @@
     </div>
     </div>
     </div>
-</div>
-</body>
-</html>
+    </Styled.Center>
+)
+}
+    
+  
