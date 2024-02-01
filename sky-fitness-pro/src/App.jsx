@@ -1,27 +1,14 @@
-import React from "react";
-import './App.css';
-import { createGlobalStyle } from "styled-components";
 import { AppRoutes } from "./routes";
-
-const GlobalStyle = createGlobalStyle`
-  *{
-    margin: 0;
-    padding: 0;
-    @font-face {
-      font-family: 'StratosSkyeng';
-      src: local("StratosSkyeng"), local("StratosSkyeng"), url("/fonts/StratosSkyeng.woff2") format("woff2"), url("/fonts/StratosSkyeng.woff") format("woff");
-      font-weight: 400;
-      font-style: normal;
-    }
-  }
-`;
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 function App() {
+  const userData = JSON.parse(localStorage.getItem('auth')) ?? null;
+
   return (
-    <>
-      <GlobalStyle />
-      <AppRoutes />
-    </>
+    <Provider store={store}>
+      <AppRoutes userData={userData} />
+    </Provider>  
   );
 }
 
