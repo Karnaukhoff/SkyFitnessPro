@@ -4,8 +4,8 @@ Cайт для онлайн школы тренировок "SkyFitnessPro". П�
 https://github.com/Karnaukhoff
 https://github.com/Ulyana0406
 # Технологии
-HTML
-Styled components
-Firebase
-React
-Redux
+1. HTML
+2. Styled components
+3. React
+4. Redux
+5. Firebase
