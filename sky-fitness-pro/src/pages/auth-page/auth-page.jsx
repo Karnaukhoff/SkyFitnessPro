@@ -57,11 +57,11 @@ export const AuthPage = ({theme}) => {
         )
       })
       setButtonActive(true)
-      navigate('/', { replace: true })
+      navigate('/profile', { replace: true })
       setError(null)
     } catch (error) {
-      console.error('Ошибка авторизации:', error.message)
-      setError(error.message)
+      console.error('Ошибка авторизации:', 'Указаны неверные email или пароль')
+      setError('Указаны неверные email или пароль')
     } finally {
       setButtonActive(false)
     }
@@ -110,12 +110,12 @@ export const AuthPage = ({theme}) => {
         )
     })
       setButtonActive(true)
-      navigate('/', { replace: true })
+      navigate('/profile', { replace: true })
       setError(null)
       setIsLoginMode(true)
     } catch (error) {
-      console.error('Ошибка авторизации:', error.message)
-      setError(error.message)
+      console.error('Ошибка авторизации:', 'Указаны неверные email или пароль')
+      setError('Указаны неверные email или пароль')
     } finally {
       setButtonActive(false)
     }

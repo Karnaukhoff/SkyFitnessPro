@@ -1,56 +1,95 @@
-
 import { useState } from 'react';
+import { updateEmail, updatePassword } from "firebase/auth";
 import { Logo } from "../logo/logo.jsx";
 import styles from './updata-user-data.module.css'
-export const UpdateUserData = ({isLoginMode, setIsActive}) => {
+import { useNavigate } from "react-router-dom";
+export const UpdateUserData = ({isLoginMode, setIsActive, user}) => {
   const [error, setError] = useState(null);
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [buttonActive, setButtonActive] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async ({ login }) => {
-    if (!login) {
-      setError('Заполните поле ввода')
-      return
-    }
+    if (login?.length < 4) {
+      setError('Логин должен быть больше 4 символов')
+      return 
+  }
+  if (login?.includes('<') || login?.includes('>')){
+      setError('Логин не может содержать < или >')
+      return 
+  }
+  if (!login) {
+    setError('Заполните поле ввода')
+    return
+}
+
     try {
-      const response = await getSignIn({ login })
-      setUser(response)
-      localStorage.setItem('user', JSON.stringify(response))
-      responseToken()
-      setButtonActive(true)
+      await updateEmail(user, login).then(() => {
+        // Update successful.
+      }).catch((error) => {
+        // An error ocurred
+        setError(`Ошибка авторизации: ${error.message}`)
+      })
       navigate('/', { replace: true })
       setError(null)
+      setButtonActive(true)
     } catch (error) {
       console.error('Ошибка авторизации:', error.message)
-      setError(error.message)
+      if (error.message === 'Firebase: Error (auth/invalid-credential).') {
+        setError('Ошибка авторизации: Недопустимые учетные данные')
+      } else if (error.message === 'Firebase: Error (auth/invalid-email).') {
+        setError('Ошибка авторизации: Неверный адрес электронной почты')
+      } else {
+        setError(`Ошибка авторизации: ${error.message}`)
+      }
     } finally {
       setButtonActive(false)
     }
   }
   
-  const handleRegister = async () => {
-    if ( !password || !repeatPassword ) {
+  const handlePassword = async ({ password, repeatPassword }) => {
+
+    if (password?.length < 4 || !/[A-Z]/.test(password)) {
+      setError('Пароль должен быть больше 4 символов и иметь хотя бы одну заглавную букву')
+      return
+  }
+  if (password?.includes('<') || password?.includes('>')) {
+      setError('Пароль не может содержать < или >')
+      return
+  }
+  if (!password) {
       setError('Заполните поле ввода')
       return
-    }
-    if (password !== repeatPassword) {
+  }
+  if (!password || !repeatPassword) {
+      setError('Заполните поле ввода')
+      return
+  }
+  if (password !== repeatPassword) {
       setError('Пароли не совпадают')
       return
-    }
+  }
     try {
-      const response = await getSignUp({ password })
-      setUser(response)
-      localStorage.setItem('user', JSON.stringify(response))
-      responseToken()
-      setButtonActive(true)
+      await updatePassword(user, password).then(() => {
+        // Update successful.
+      }).catch((error) => {
+        // An error ocurred
+        setError(`Ошибка авторизации: ${error.message}`)
+      });
       navigate('/', { replace: true })
       setError(null)
-      // setIsLoginMode(true)
+      setButtonActive(true)
     } catch (error) {
       console.error('Ошибка авторизации:', error.message)
-      setError(error.message)
+      if (error.message === 'Firebase: Error (auth/invalid-credential).') {
+        setError('Ошибка авторизации: Недопустимые учетные данные')
+      } else if (error.message === 'Firebase: Error (auth/invalid-email).') {
+        setError('Ошибка авторизации: Неверный адрес электронной почты')
+      } else {
+        setError(`Ошибка авторизации: ${error.message}`)
+      }
     } finally {
       setButtonActive(false)
     }
@@ -112,7 +151,7 @@ export const UpdateUserData = ({isLoginMode, setIsActive}) => {
               </div>
               {error && <div className={styles.error}>{error}</div>}
               <div className={styles.buttons}>
-                <button className={styles.primaryButton} disabled={buttonActive} onClick={handleRegister}>
+                <button className={styles.primaryButton} disabled={buttonActive} onClick={() => handlePassword({ password, repeatPassword })}>
                     {buttonActive
                     ? 'Сохрание...'
                     : 'Сохранить'}

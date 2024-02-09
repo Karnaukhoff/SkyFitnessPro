@@ -11,7 +11,9 @@ export const WorkoutPage = ({theme}) => {
     const [error, setError] = useState()
     const { courseId, id } = useParams();
     const { data, isLoading } = useGetWorkoutQuery(id);
+    console.log(data)
     const courses = useGetCoursesQuery();
+    console.log(courses)
     const [isInputResultActive, setIsInputResultActive] = useState(false);
     const [isProgressDone, setIsProgressDone] = useState(false);
     const [result, setResult] = useState([0,0,0,0,0])
@@ -32,10 +34,19 @@ export const WorkoutPage = ({theme}) => {
     const countResultGuantity = (quantity, index) => {
         userInputData[index] = Math.abs(quantity);  
     }
-    
+    useEffect(() => {
+        if (data) {
+            dispatch(setCurrentPage('workout'))
+            let arr = data?.exercises?.map((exercise) => { return exercise })
+            console.log(arr)
+            setNumExercises(arr)
+        }
+    }, [data])
     // Функция расчета результатов
     const countResultExersise = () => {
         let newResult = [];
+        console.log(userInputData);
+        console.log(numExercises);
         if (userInputData?.length === numExercises?.length) {
             for (let i = 0; i < userInputData?.length; i++) {
                 newResult.push((userInputData[i] / data.exercises[i].quantity) * 100);
@@ -59,20 +70,19 @@ export const WorkoutPage = ({theme}) => {
         return progressBarColors[index % progressBarColors.length]
     }
 
-    useEffect(() => {
-        if (courses) {
-            dispatch(setCurrentPage('workout'))
-            let arr = data?.exercises?.map((exercise) => { return exercise })
-            setNumExercises(arr)
-        }
-    }, [courses])
+  
 
     return (
         <MainLayout theme={theme} isLoading={isLoading}>
             <div>
                 <div>
-                    <h1 className={styles.title}>{courses.data[courseId]?.nameRU}</h1>
-                    <p className={styles.workoutText}>{data?.name}</p>
+                    {data?.exercises?.length ? (
+                        <div>
+                            <h1 className={styles.title}></h1>
+                            <p className={styles.workoutText}>{data?.name}</p>
+                        </div>
+                    
+                    ) : (<div></div>)}
                 </div>
 
                 <div className={styles.workoutVideo}>

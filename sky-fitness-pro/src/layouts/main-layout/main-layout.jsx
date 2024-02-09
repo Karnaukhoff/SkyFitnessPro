@@ -1,6 +1,6 @@
 import { Header } from "../../components/header/header"
 import { Container } from "../../styles/common.styles"
-import { Preloader } from "../../components/preloader/preloader"
+import { Preloader } from "../../components/preloader/Preloader"
 import { useState, useEffect } from "react"
 import styles from './main-layout.module.css'
 export const MainLayout = ({children, theme, isShowButton, isLoading = false}) => {
@@ -13,6 +13,7 @@ export const MainLayout = ({children, theme, isShowButton, isLoading = false}) =
                 setLoadingPreloader(false);
             }, 1500);
         }
+        // eslint-disable-next-line
       }, []);
 
     return (

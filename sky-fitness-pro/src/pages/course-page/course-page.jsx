@@ -15,6 +15,7 @@ export const CoursePage = ({theme, isShowButton}) => {
     const auth = localStorage.getItem('auth')
     const navigate = useNavigate();
     const handleLoginClick = ({auth}) => {
+        console.log(auth)
         if (!!auth) {
             setShow(!show)
             localStorage.setItem('userCourses', id)
@@ -82,7 +83,12 @@ export const CoursePage = ({theme, isShowButton}) => {
                         Оставьте заявку на пробное занятие, мы свяжемся 
                         с вами, поможем с выбором направления и тренера, с которым тренировки принесут здоровье и радость!
                     </p>
-                    <BaseButton action={() => handleLoginClick({auth})} theme='dark' text='Записаться на тренировку' />
+                    { !!auth ? (<BaseButton action={() => handleLoginClick({auth})} theme='dark' text='Записаться на тренировку' />) : 
+                    (<div>
+                        Войдите или зарегистрируйстесь, чтобы записаться на курс
+                        </div>)
+
+                    }
                     <img className={styles.submitApplicationImg} src="/img/phone.svg" alt="phone" />
                 </div>
                 {show && <ProgressBlock text = 'Вы успешно записались!' setShow={setShow}/>} 

@@ -86,7 +86,7 @@ export const ProfilePage = () => {
                         )
                     })}
                 </div>
-                {isActive && <UpdateUserData isLoginMode={isLoginMode} setIsActive={setIsActive}/> }
+                {isActive && <UpdateUserData isLoginMode={isLoginMode} setIsActive={setIsActive} user={user.userName}/> }
                 {isShowWorkouts && <WorkoutsModal action={handleShowWorkoutsModal} data={workoutsData} courseId={courseId} />}
             </MainLayout>
     )
