@@ -153,6 +153,7 @@ export const WorkoutPage = ({theme}) => {
                         <div className={styles.workoutProgressBlock}>
 
                         {data?.exercises?.map((exercise, index) => {
+                            if (result[index] >= 100) result[index] = 100
                                 return (
                                     <div className={styles.workoutProgressContent} key={index}>
                                         <p className={styles.workoutProgressText}>{getExerciseName(exercise.name)}</p>
