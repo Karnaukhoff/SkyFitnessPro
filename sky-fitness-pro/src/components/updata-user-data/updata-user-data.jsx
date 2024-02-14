@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { updateEmail, updatePassword } from "firebase/auth";
+import { getAuth, updateEmail, updatePassword } from "firebase/auth";
 import { Logo } from "../logo/logo.jsx";
 import styles from './updata-user-data.module.css'
 import { useNavigate } from "react-router-dom";
-export const UpdateUserData = ({isLoginMode, setIsActive, user}) => {
+export const UpdateUserData = ({isLoginMode, setIsActive}) => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
   const [error, setError] = useState(null);
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
